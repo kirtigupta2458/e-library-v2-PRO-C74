@@ -48,29 +48,18 @@ export default class SearchScreen extends Component {
     }
 
     if (enteredText[0] === "B") {
-      db.collection("transactions")
-        .where("book_id", "==", text)
-        .get()
-        .then(snapshot => {
-          snapshot.docs.map(doc => {
-            this.setState({
-              allTransactions: [...this.state.allTransactions, doc.data()],
-              lastVisibleTransaction: doc
-            });
-          });
-        });
+      
+      
+      
+      
+      
     } else if (enteredText[0] === "S") {
-      db.collection("transactions")
-        .where("student_id", "==", text)
-        .get()
-        .then(snapshot => {
-          snapshot.docs.map(doc => {
-            this.setState({
-              allTransactions: [...this.state.allTransactions, doc.data()],
-              lastVisibleTransaction: doc
-            });
-          });
-        });
+     
+      
+      
+      
+      
+      
     }
   };
 
@@ -117,17 +106,17 @@ export default class SearchScreen extends Component {
       .join(" ");
 
     var transactionType =
-      item.transaction_type === "issue" ? "issued" : "returned";
+      item.transactionType === "issue" ? "issued" : "returned";
     return (
       <View style={{ borderWidth: 1 }}>
         <ListItem key={i} bottomDivider>
-          <Icon type={"antdesign"} name={"book"} size={40} />
+          <Icon type={" "} name={" "} size={40} />
           <ListItem.Content>
             <ListItem.Title style={styles.title}>
-              {`${item.book_name} ( ${item.book_id} )`}
+              {`${} ( ${} )`}
             </ListItem.Title>
             <ListItem.Subtitle style={styles.subtitle}>
-              {`This book ${transactionType} by ${item.student_name}`}
+              {`This book ${transactionType} by ${}`}
             </ListItem.Subtitle>
             <View style={styles.lowerLeftContaiiner}>
               <View style={styles.transactionContainer}>
@@ -179,7 +168,7 @@ export default class SearchScreen extends Component {
             />
             <TouchableOpacity
               style={styles.scanbutton}
-              onPress={() => this.handleSearch(searchText)}
+             
             >
               <Text style={styles.scanbuttonText}>Search</Text>
             </TouchableOpacity>
